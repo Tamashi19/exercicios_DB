@@ -1,10 +1,10 @@
-CREATE DATABASE LOCADORA_KAUE;
+CREATE DATABASE LOCADORA;
 GO
 
-USE LOCADORA_KAUE;
+USE LOCADORA;
 GO
 
-CREATE TABLE EMPRESA(
+CREATE TABLE EMPRESA_(
  idEmpresa SMALLINT PRIMARY KEY IDENTITY(1,1),
  nomeEmpresa VARCHAR(30) NOT NULL
 );
@@ -44,7 +44,7 @@ GO
 
 SELECT * FROM MODELO
 
-CREATE TABLE VEICULO(
+CREATE TABLE VEICULO_(
  idVeiculo SMALLINT PRIMARY KEY IDENTITY(1,1),
  idModelo SMALLINT FOREIGN KEY REFERENCES MODELO(idModelo),
  idEmpresa SMALLINT FOREIGN KEY REFERENCES EMPRESA(idEmpresa),
@@ -90,8 +90,7 @@ GO
 
 SELECT * FROM ALUGUEL
 
--- listar todos os alugueis mostrando as datas de início e fim,
--- o nome do cliente que alugou e nome do modelo do carro
+
 
 SELECT ALUGUEL.dataFim, ALUGUEL.dataFim, CLIENTE.nomeCliente, MODELO.nomeModelo FROM ALUGUEL
 INNER JOIN CLIENTE
@@ -102,8 +101,7 @@ INNER JOIN MODELO
 ON MODELO.idModelo = VEICULO.idModelo;
 GO
 
--- listar os alugueis de um determinado cliente mostrando seu nome, 
--- as datas de início e fim e o nome do modelo do carro
+
 
 SELECT ALUGUEL.dataFim, ALUGUEL.dataFim, CLIENTE.nomeCliente, MODELO.nomeModelo FROM ALUGUEL
 INNER JOIN CLIENTE

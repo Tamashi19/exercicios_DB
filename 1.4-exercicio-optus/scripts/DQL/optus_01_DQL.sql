@@ -1,7 +1,7 @@
-CREATE DATABASE OPTUS_KAUE;
+CREATE DATABASE OPTUS;
 GO
 
-USE OPTUS_KAUE;
+USE OPTUS;
 GO
 
 CREATE TABLE ARTISTA(
@@ -14,9 +14,6 @@ INSERT INTO ARTISTA(nomeArtista)
 VALUES ('SIA'), ('ALT-J');
 GO
 
---DELETE FROM ARTISTA
---WHERE ARTISTA.idArtista > 2;
---GO
 
 SELECT * FROM ARTISTA
 
@@ -80,13 +77,10 @@ DELETE FROM USUARIO
 WHERE idUsuario = 1;
 GO
 
--- listar todos os usuários administradores, sem exibir suas senhas
-
 SELECT USUARIO.nomeUsuario, USUARIO.email, USUARIO.permissao FROM USUARIO
 WHERE USUARIO.permissao LIKE 'ADM';
 GO
 
--- listar todos os álbuns lançados após o um determinado ano de lançamento
 
 SELECT ALBUM.nomeAlbum, ALBUM.dataLanc, ALBUM.ativo, ARTISTA.nomeArtista FROM ALBUM
 INNER JOIN ARTISTA
@@ -94,13 +88,11 @@ ON ALBUM.idArtista = ARTISTA.idArtista
 WHERE ALBUM.dataLanc > '2010';
 GO
 
--- listar os dados de um usuário através do e-mail e senha
-
 SELECT USUARIO.nomeUsuario, USUARIO.email, USUARIO.permissao FROM USUARIO
 WHERE USUARIO.email LIKE 'ana#email.com' AND USUARIO.senha LIKE '555555555';
 GO
 
--- listar todos os álbuns ativos, mostrando o nome do artista e os estilos do álbum 
+ 
 
 SELECT ALBUM.nomeAlbum, ALBUM.dataLanc, ALBUM.ativo, ARTISTA.nomeArtista, ESTILO.nomeEstilo FROM ALBUM
 INNER JOIN ARTISTA

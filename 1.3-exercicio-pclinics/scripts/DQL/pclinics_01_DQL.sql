@@ -1,8 +1,8 @@
 
-CREATE DATABASE PCLINICS_KAUE;
+CREATE DATABASE PCLINICS;
 GO
 
-USE PCLINICS_KAUE;
+USE PCLINICS;
 GO
 
 CREATE TABLE CLINICA(
@@ -101,7 +101,7 @@ GO
 
 SELECT * FROM ATENDIMENTO
 
--- listar todos os veterinários (nome e CRMV) de uma clínica (razão social)
+
 
 SELECT VETERINARIO.nomeVet, VETERINARIO.crmv, CLINICA.nomeClinica FROM VETERINARIO
 INNER JOIN CLINICA
@@ -109,28 +109,24 @@ ON VETERINARIO.idClinica = CLINICA.idClinica
 WHERE CLINICA.nomeClinica = 'PLENA';
 GO
 
--- listar todas as raças que começam com a letra S
+
 
 SELECT RACA.nomeRaca FROM RACA
 WHERE RACA.nomeRaca LIKE 'S%';
 GO
 
--- listar todos os tipos de pet que terminam com a letra O
 
 SELECT TIPOPET.nomeTipo FROM TIPOPET
 WHERE TIPOPET.nomeTipo LIKE '%O';
 GO
 
--- listar todos os pets mostrando os nomes dos seus donos
+
 
 SELECT PET.nomePet, DONO.nomeDono FROM PET
 INNER JOIN DONO
 ON PET.idDono = DONO.idDono;
 GO
 
--- listar todos os atendimentos mostrando o nome do veterinário que atendeu, 
--- o nome, a raça e o tipo do pet que foi atendido,
--- o nome do dono do pet e o nome da clínica onde o pet foi atendido
 
 SELECT VETERINARIO.nomeVet, PET.nomePet, RACA.nomeRaca, TIPOPET.nomeTipo, DONO.nomeDono, CLINICA.nomeClinica FROM ATENDIMENTO
 INNER JOIN VETERINARIO
